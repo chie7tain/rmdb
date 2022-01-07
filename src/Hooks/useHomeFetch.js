@@ -8,6 +8,7 @@ const initialState = {
   total_results: 0,
 };
 const useHomeFetch = () => {
+  const [searchTerm, setSearchIterm] = useState("");
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -16,8 +17,8 @@ const useHomeFetch = () => {
     try {
       setError(false);
       setLoading(true);
-      const movies = await API.fetchMovies(searchTerm, page);
 
+      const movies = await API.fetchMovies(searchTerm, page);
       setState((prev) => ({
         ...movies,
         results:
@@ -29,13 +30,12 @@ const useHomeFetch = () => {
     setLoading(false);
   };
 
-  //Initial render
+  ///initial render
   useEffect(() => {
     fetchMovies(1);
   }, []);
 
-  console.log(state);
-  return { state, loading, error };
+  return { state, loading, error, setSearchIterm };
 };
 
 export default useHomeFetch;
