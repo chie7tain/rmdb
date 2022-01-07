@@ -14,7 +14,7 @@ import useHomeFetch from "../Hooks/useHomeFetch";
 import NoImage from "../images/no_image.jpg";
 
 const Home = () => {
-  const { state, loading, error, setSearchIterm } = useHomeFetch();
+  const { state, loading, error, searchTerm, setSearchIterm } = useHomeFetch();
   console.log(state);
   return (
     <>
@@ -26,7 +26,7 @@ const Home = () => {
         />
       ) : null}
       <SearchBar setSearchIterm={setSearchIterm} />
-      <Grid header="Popular Movies">
+      <Grid header={searchTerm ? "Search Result" : "Popular Movies"}>
         {state.results.map((movie) => (
           <Thumb
             key={movie.id}

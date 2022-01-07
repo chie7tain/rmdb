@@ -12,7 +12,6 @@ export const Content = styled.div`
   max-width: var(--maxWidth);
   padding: 20px 0;
   margin: 0 auto;
-  border: 1px solid gold;
 `;
 
 export const LogoImg = styled.img`
