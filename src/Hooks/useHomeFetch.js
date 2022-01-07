@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import API from "../API";
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
   total_pages: 0,
   total_results: 0,
 };
-export const useHomeFetch = () => {
+const useHomeFetch = () => {
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -21,7 +21,7 @@ export const useHomeFetch = () => {
       setState((prev) => ({
         ...movies,
         results:
-          page > 1 ? [...prev.results, ...movies.results] : movies.results,
+          page > 1 ? [...prev.results, ...movies.results] : [...movies.results],
       }));
     } catch (error) {
       setError(true);
@@ -34,5 +34,8 @@ export const useHomeFetch = () => {
     fetchMovies(1);
   }, []);
 
+  console.log(state);
   return { state, loading, error };
 };
+
+export default useHomeFetch;
