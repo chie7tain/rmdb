@@ -8,7 +8,7 @@ import Thumb from "./Thumb";
 import Spinner from "./Spinner";
 import SearchBar from "./SearchBar";
 ///Hook
-import useHomeFetch from "../hooks/useHomeFetch";
+import useHomeFetch from "../Hooks/useHomeFetch";
 
 ///Image
 import NoImage from "../images/no_image.jpg";
